@@ -37,28 +37,6 @@ class _InputState extends State<Input> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: box_cover(
-                    cardChild: IconContent(
-                      icon: Icons.male,
-                      label: "MALE",
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: box_cover(
-                    cardChild: IconContent(
-                      icon: Icons.female,
-                      label: "FEMALE",
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
             child: box_cover(
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -114,119 +92,108 @@ class _InputState extends State<Input> {
             ),
           ),
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Expanded(
-                  child: box_cover(
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "WEIGHT",
-                          style: kTextStyleS,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.baseline,
-                          textBaseline: TextBaseline.alphabetic,
-                          children: [
-                            Text(
-                              "$weight",
-                              style: kTextStyleN,
-                            ),
-                            Text(
-                              "kg",
-                              style: kTextStyleS,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            FloatingActionButton(
-                              onPressed: () {
-                                setState(() {
-                                  weight--;
-                                });
-                              },
-                              child: FaIcon(
-                                FontAwesomeIcons.minus,
-                                color: Colors.white,
-                              ),
-                              backgroundColor: Color(0xFF111428),
-                            ),
-                            FloatingActionButton(
-                              onPressed: () {
-                                setState(() {
-                                  weight++;
-                                });
-                              },
-                              child: FaIcon(
-                                FontAwesomeIcons.plus,
-                                color: Colors.white,
-                              ),
-                              backgroundColor: Color(0xFF111428),
-                            ),
-                          ],
-                        ),
-                      ],
+            child: box_cover(
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "WEIGHT",
+                    style: kTextStyleS,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        "$weight",
+                        style: kTextStyleN,
+                      ),
+                      Text(
+                        "kg",
+                        style: kTextStyleS,
+                      )
+                    ],
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      inactiveTrackColor: Color(0xFF888993),
+                      activeTrackColor: Colors.white,
+                      thumbColor: Color(0xFFEB1555),
+                      overlayColor: Color(0xFF29EB1555),
+                      thumbShape:
+                      RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                      overlayShape: RoundSliderOverlayShape(
+                        overlayRadius: 30.0,
+                      ),
+                    ),
+                    child: Slider(
+                      value: weight.toDouble(),
+                      min: 10,
+                      max: 200,
+                      onChanged: (a) {
+                        setState(() {
+                          weight = a.round();
+                        });
+                      },
                     ),
                   ),
-                ),
-                Expanded(
-                  child: box_cover(
-                    cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "AGE",
-                          style: kTextStyleS,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "$age",
-                          style: kTextStyleN,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            FloatingActionButton(
-                              onPressed: () {
-                                setState(() {
-                                  age--;
-                                });
-                              },
-                              child: FaIcon(
-                                FontAwesomeIcons.minus,
-                                color: Colors.white,
-                              ),
-                              backgroundColor: Color(0xFF111428),
-                            ),
-                            FloatingActionButton(
-                              onPressed: () {
-                                setState(() {
-                                  age++;
-                                });
-                              },
-                              child: FaIcon(
-                                FontAwesomeIcons.plus,
-                                color: Colors.white,
-                              ),
-                              backgroundColor: Color(0xFF111428),
-                            ),
-                          ],
-                        ),
-                      ],
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            child: box_cover(
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "AGE",
+                    style: kTextStyleS,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        "$age",
+                        style: kTextStyleN,
+                      ),
+                    ],
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      inactiveTrackColor: Color(0xFF888993),
+                      activeTrackColor: Colors.white,
+                      thumbColor: Color(0xFFEB1555),
+                      overlayColor: Color(0xFF29EB1555),
+                      thumbShape:
+                      RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                      overlayShape: RoundSliderOverlayShape(
+                        overlayRadius: 30.0,
+                      ),
+                    ),
+                    child: Slider(
+                      value: age.toDouble(),
+                      min: 1,
+                      max: 100,
+                      onChanged: (a) {
+                        setState(() {
+                          age = a.round();
+                        });
+                      },
                     ),
                   ),
-                ),
-              ],
+                  //Range needed
+                ],
+              ),
             ),
           ),
           // ElevatedButton(onPressed: (){}, child: Text("Calculate your BMI score",style: TextStyle(fontSize: 26),),)
